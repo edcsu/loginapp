@@ -1,1 +1,21 @@
 <h2 class="page-header">REGISTER</h2>
+<form method="POST" action="/users/register">
+  <div class="form-group">
+    <label for="registername">Username</label>
+    <input type="text" class="form-control" name="username" id="registername" aria-describedby="emailHelp" placeholder="Enter Username">
+  </div>
+  <div class="form-group">
+    <label for="registerEmail">Email address</label>
+    <input type="email" class="form-control" name="email" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="registerpassword1">Password</label>
+    <input type="password" class="form-control" name="password" id="registerpassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="registerpassword2">Confirm Password</label>
+    <input type="password" class="form-control" name="paasword2" id="registerpassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
