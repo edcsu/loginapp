@@ -23,7 +23,7 @@ router.post('/register',[
         }
         return true;
     })
-] ,function(req, res) {
+] , (req, res) => {
     let name = req.body.name;
     let email = req.body.email;
     let username = req.body.username;
@@ -61,7 +61,7 @@ router.get('/login', (req, res) => {
 // local strategy
 passport.use( new localStrategy(
     (username, password, done) => {
-        User.getUserByUsername(username, (err, user) =>{
+        User.getUserByUsername(username, (err, user) => {
             if (err) {
                 throw err;
             }
@@ -74,7 +74,7 @@ passport.use( new localStrategy(
                     throw err;
                 }
                 if (isMatch) {
-                    return done(null, false);
+                    return done(null, user);
                 } else {
                     return done(null, false, { message: 'Invalid password'});
                 }
@@ -82,12 +82,12 @@ passport.use( new localStrategy(
         });
 }));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser((user, done) => {
     done(null, user.id);
 });
   
-passport.deserializeUser(function(id, done) {
-    User.getUserById(id, function(err, user) {
+passport.deserializeUser((id, done) => {
+    User.getUserById(id, (err, user) => {
         done(err, user);
     });
 });
