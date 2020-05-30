@@ -37,14 +37,29 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mb-4">
+                    {{#if success_msg}}
+                        <div class="alert alert-success" role="alert">
+                            <i class="fas fa-check-circle"></i> {{success_msg}}
+                        </div>  
+                    {{/if}}
+                    {{#if error_msg}}
+                        <div class="alert alert-danger" role="alert">    
+                            <i class="fas fa-exclamation-triangle"></i> {{error_msg}}
+                        </div>
+                    {{/if}}
+                    {{#if error}}
+                        <div class="alert alert-danger" role="alert">
+                            <i class="fas fa-exclamation-triangle"></i> {{error}}
+                        </div>
+                    {{/if}}
                     {{{body}}}
                 </div>
             </div>
         </div> <!-- /container -->
 
     </main>
-    <footer class="footer fixed-bottom py-3">
+    <footer class="footer fixed-bottom mt-5 py-3">
         <div class="container">
             <span class="text-muted">&copy; 2020</span>
         </div>

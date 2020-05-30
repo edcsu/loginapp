@@ -1,17 +1,16 @@
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser');
-let exphb = require('express-handlebars');
-let expressValidator = require('express-validator');
-let flash = require('connect-flash');
-let session = require('express-session');
-let passport = require('passport');
-let localStrategy = require('passport-local').Strategy;
-let mongo = require('mongodb');
-let mongoose = require('mongoose');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const exphb = require('express-handlebars');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const mongo = require('mongodb');
+const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/loginapp', 
-    {useNewUrlParser: true, useUnifiedTopology: true})
+    {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     .then(()=>{
         console.log(`connection to database established`)
     })
@@ -51,24 +50,6 @@ app.use(session({
 // passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
-// express validator not a function
-// app.use(expressValidator({
-//     errorFormatter: function (param, msg, value) {
-//         let namespace = param.split('.')
-//         , root = namespace.shift()
-//         , formParam = root;
-
-//         while (namespace.length) {
-//             formParam += '[' +namespace.shift() + ']';
-//         }
-//         return {
-//             param: formParam,
-//             msg,
-//             value
-//         }
-//     }
-// }))
 
 // connect flash
 app.use(flash());

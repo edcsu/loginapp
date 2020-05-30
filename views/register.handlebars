@@ -1,8 +1,22 @@
 <h2 class="page-header">REGISTER</h2>
-<form method="POST" action="/users/register">
+
+{{#if errors}}
+  {{#each errors}}
+    <div class="alert alert-danger" role="alert">
+      <i class="fas fa-exclamation-triangle"></i>
+      {{msg}}
+    </div>
+  {{/each}}
+{{/if}}
+
+<form method="POST" action="/users/register" class="mb-5">
   <div class="form-group">
-    <label for="registername">Username</label>
-    <input type="text" class="form-control" name="username" id="registername" aria-describedby="emailHelp" placeholder="Enter Username">
+    <label for="registerName">Name</label>
+    <input type="text" class="form-control" name="name" id="registername" aria-describedby="namelHelp" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="registerUsername">Username</label>
+    <input type="text" class="form-control" name="username" id="registerUsername" aria-describedby="usernameHelp" placeholder="Enter Username">
   </div>
   <div class="form-group">
     <label for="registerEmail">Email address</label>
@@ -15,7 +29,7 @@
   </div>
   <div class="form-group">
     <label for="registerpassword2">Confirm Password</label>
-    <input type="password" class="form-control" name="paasword2" id="registerpassword2" placeholder="Password">
+    <input type="password" class="form-control" name="password2" id="registerpassword2" placeholder="Retype the password">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
